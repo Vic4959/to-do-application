@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 function Task() {
   return (
-    <div>Task</div>
-  )
+    <div>
+      <h1>Task</h1>
+    </div>
+  );
 }
 
-export default Task
+export default Task;
