@@ -5,12 +5,14 @@ import theme from "./components/features/Theme";
 import { CssBaseline, Toolbar } from "@mui/material";
 import { Box } from "@mui/system";
 import Layout from "./components/layout";
+import DashboardRoutes from "./routes";
 
 function App() {
+  const firstName = "Victor";
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Layout />
+      <DashboardRoutes />
     </ThemeProvider>
   );
 }

@@ -2,7 +2,7 @@ import { Badge, IconButton, Tab, Tabs } from "@mui/material";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import CssBaseline from "@mui/material/CssBaseline";
 import AppBar from "@mui/material/AppBar";
-import { Route, Routes } from "react-router-dom";
+import { Outlet, Route, Routes } from "react-router-dom";
 import Toolbar from "@mui/material/Toolbar";
 import Box from "@mui/material/Box";
 import { Link } from "react-router-dom";
@@ -16,6 +16,7 @@ function Layout() {
   return (
     <Box>
       <CssBaseline />
+
       <AppBar
         position="fixed"
         elevation={0}
@@ -40,12 +41,8 @@ function Layout() {
         <SideBar />
 
         <Box sx={{ width: "calc(100% - 240px)", mt: "100px" }}>
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/Task" element={<Task />} />
-            <Route path="/Profile" element={<Profile />} />
-            <Route path="/Settings" element={<Settings />} />
-          </Routes>
+          {" "}
+          <Outlet />
         </Box>
       </Box>
     </Box>
