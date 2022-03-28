@@ -12,54 +12,63 @@ import { makeStyles } from "@mui/styles";
 import PastTask from "./modalButton";
 // import Dashboard from './components/features/Dashboard';
 
+const fetchData = () =>
+  new Promise((resolve) => {
+    const items = [
+      {
+        id: 1,
+        name: "14 Nov",
+        created: "Play Chess with Messi Show the football GOAT with da boss",
+        startTime: "12:51pm",
+        endTime: "1:30pm",
+        duration: "39 mins",
+        other: "...",
+      },
+      {
+        id: 2,
+        name: "02 Dec",
+        created: "Go Skydiving with Kal-el Who is more fly? Me! Thats who",
+        startTime: "5:50pm",
+        endTime: "6:00pm",
+        duration: "10 mins",
+        other: "...",
+      },
+      {
+        id: 3,
+        name: "08 Dec",
+        created: "Visit mum Order flight tickets to California",
+        startTime: "08:00am",
+        endTime: "11:00pm",
+        duration: "03: hrs",
+        other: "...",
+      },
+      {
+        id: 4,
+        name: "25 Dec",
+        created: "Christmas at Sues Prepare Christmas gifts and wrappers",
+        startTime: "10:30am",
+        endTime: "12:00pm",
+        duration: "1hr 30mins",
+        other: "...",
+      },
+    ];
+    setTimeout(() => resolve(items), 1000);
+  });
 const usePaperStyles = makeStyles((theme) => ({
   root: { margin: theme.spacing(2) },
 }));
 
-export default function Dashboard() {
+export default function UpcomingTasks() {
   const classes = usePaperStyles();
-  const [items, setItems] = useState([
-    {
-      id: 1,
-      name: "14 Nov",
-      created: "Play Chess with Messi Show the football GOAT with da boss",
-      startTime: "12:51pm",
-      endTime: "1:30pm",
-      duration: "39 mins",
-      other: "...",
-    },
-    {
-      id: 2,
-      name: "02 Dec",
-      created: "Go Skydiving with Kal-el Who is more fly? Me! Thats who",
-      startTime: "5:50pm",
-      endTime: "6:00pm",
-      duration: "10 mins",
-      other: "...",
-    },
-    {
-      id: 3,
-      name: "08 Dec",
-      created: "Visit mum Order flight tickets to California",
-      startTime: "08:00am",
-      endTime: "11:00pm",
-      duration: "03: hrs",
-      other: "...",
-    },
-    {
-      id: 4,
-      name: "25 Dec",
-      created: "Christmas at Sues Prepare Christmas gifts and wrappers",
-      startTime: "10:30am",
-      endTime: "12:00pm",
-      duration: "1hr 30mins",
-      other: "...",
-    },
-  ]);
-
+  const [items, setItems] = useState([]);
+  useEffect(() => {
+    fetchData().then((items) => {
+      setItems(items);
+    });
+  }, []);
   return (
     <Paper className={classes.root}>
-      <h1 sx={{ color: "#053858" }}>Here Are Your Tasks For Today</h1>
+      <h1 sx={{ color: "#053858" }}>Here Are Your Upcoming Tasks </h1>
       <Table>
         <TableHead>
           <TableRow>
@@ -88,7 +97,7 @@ export default function Dashboard() {
           })}
         </TableBody>
       </Table>
-      <PastTask />
+
       {/* <Button
       sx={{ borderRadius: 4,
         fontSize: '0.875rem',
