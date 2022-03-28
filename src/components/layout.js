@@ -11,6 +11,7 @@ import Dashboard from "../components/features/Dashboard";
 import Profile from "../components/features/Profile";
 import Settings from "../components/features/Settings";
 import Task from "../components/features/Task";
+import modal from "./features/modal";
 
 function Layout() {
   return (

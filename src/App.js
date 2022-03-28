@@ -7,6 +7,7 @@ import { Box } from "@mui/system";
 import Layout from "./components/layout";
 import DashboardRoutes from "./routes";
 
+
 function App() {
   const firstName = "Victor";
   return (

@@ -11,11 +11,11 @@ function DashboardRoutes() {
     <Routes>
       {/* <Route path="/login" element={<Login/>}/>
         <Route path="/contactUs" element={<ContactUs/>}/> */}
-      <Route path="/layout" element={<Layout />}>
+      <Route path="/" element={<Layout />}>
         <Route index element={<Dashboard />} />
-        <Route path="Task" element={<Task />} />
-        <Route path="Profile" element={<Profile />} />
-        <Route path="Settings" element={<Settings />} />
+        <Route path="/Task" element={<Task />} />
+        <Route path="/Profile" element={<Profile />} />
+        <Route path="/Settings" element={<Settings />} />
       </Route>
     </Routes>
   );

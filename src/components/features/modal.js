@@ -1,8 +1,6 @@
-import { Button, Paper, Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material";
 import React, { useState, useEffect } from 'react';
+import { Paper, Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material";
 import { makeStyles } from '@mui/styles';
-import PastTask from "./pastTask";
-// import Dashboard from './components/features/Dashboard';
 
 const fetchData = () =>
 new Promise(resolve => {
@@ -50,7 +48,7 @@ const usePaperStyles = makeStyles(theme => ({
 root: { margin: theme.spacing(2) }
 }));
 
-export default function Dashboard() {
+function Modal() {
   const classes = usePaperStyles();
   const [items, setItems] = useState([]);
   useEffect(() => {
@@ -89,7 +87,6 @@ export default function Dashboard() {
         })}
         </TableBody>
       </Table>
-      <PastTask />
       {/* <Button
       sx={{ borderRadius: 4,
         fontSize: '0.875rem',
@@ -103,3 +100,4 @@ export default function Dashboard() {
   );
 }
 
+export default Modal
