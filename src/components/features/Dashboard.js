@@ -8,16 +8,11 @@ import {
   TableRow,
 } from "@mui/material";
 import React, { useState, useEffect } from "react";
-import { makeStyles } from "@mui/styles";
+
 import PastTask from "./modalButton";
 // import Dashboard from './components/features/Dashboard';
 
-const usePaperStyles = makeStyles((theme) => ({
-  root: { margin: theme.spacing(2) },
-}));
-
 export default function Dashboard() {
-  const classes = usePaperStyles();
   const [items, setItems] = useState([
     {
       id: 1,
@@ -58,7 +53,7 @@ export default function Dashboard() {
   ]);
 
   return (
-    <Paper className={classes.root}>
+    <Paper sx={{ m: 2 }}>
       <h1 sx={{ color: "#053858" }}>Here Are Your Tasks For Today</h1>
       <Table>
         <TableHead>

@@ -79,8 +79,4 @@ const SideBar = () => {
   );
 };
 
-// const useStyles = makeStyles({
-//   root: { }
-// });
-
 export default SideBar;
