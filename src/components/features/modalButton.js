@@ -8,18 +8,8 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import {
-  Grid,
-  InputBase,
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Grid, TextField, Typography } from "@mui/material";
+import { useState } from "react";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -103,6 +93,62 @@ export default function PastTask() {
   const handleClose = () => {
     setOpen(false);
   };
+  const [values, setValues] = useState({
+    taskTitle: '',
+    startTime:  '',
+    endTime: '',
+    taskDescription: '',
+    subTask: '',
+    subTaskDuration: ''
+  });
+
+  const handleTaskTitleInputChange = (event) => {
+    event.persist();
+    setValues((values) => ({
+      ...values,
+      taskTitle: event.target.value,
+    }));
+  };
+
+  const handleStartTimeInputChange = (event) => {
+    event.persist();
+    setValues((values) => ({
+      ...values,
+      startTime: event.target.value,
+    }));
+  };
+
+  const handleEndTimeInputChange = (event) => {
+    event.persist();
+    setValues((values) => ({
+      ...values,
+      endTime: event.target.value,
+    }));
+  };
+
+  const handleTaskDescriptionInputChange = (event) => {
+    event.persist();
+    setValues((values) => ({
+      ...values,
+      taskDescription: event.target.value,
+    }));
+  };
+
+  const handleSubTaskInputChange = (event) => {
+    event.persist();
+    setValues((values) => ({
+      ...values,
+      subTask: event.target.value,
+    }));
+  };
+
+  const handleSubTaskDurationInputChange = (event) => {
+    event.persist();
+    setValues((values) => ({
+      ...values,
+      subTaskDuration: event.target.value,
+    }));
+  };
 
   return (
     <div>
@@ -155,6 +201,10 @@ export default function PastTask() {
                 size="small"
                 id="custom-css-outlined-input"
                 variant="filled"
+                name="taskTitle"
+                value={values.taskTitle}
+                placeholder="Task Title"
+                onChange={handleTaskTitleInputChange}
                 color="primary"
                 sx={{ backgroundColor: "white" }}
               />
@@ -166,6 +216,10 @@ export default function PastTask() {
               <RedditTextField
                 size="small"
                 id="custom-css-outlined-input"
+                name="startTime"
+                value={values.startTime}
+                placeholder="Start Time"
+                onChange={handleStartTimeInputChange}
                 variant="filled"
               />
             </Grid>
@@ -176,6 +230,10 @@ export default function PastTask() {
               <RedditTextField
                 size="small"
                 id="custom-css-outlined-input"
+                name="endTime"
+                value={values.endTime}
+                placeholder="End Time"
+                onChange={handleEndTimeInputChange}
                 variant="filled"
               />
             </Grid>
@@ -188,6 +246,10 @@ export default function PastTask() {
               multiline
               rows={4}
               id="custom-css-outlined-input"
+              name="taskDescription"
+              value={values.taskDescription}
+              placeholder="Task Description"
+              onChange={handleTaskDescriptionInputChange}
               variant="filled"
             />
           </Grid>
@@ -200,6 +262,10 @@ export default function PastTask() {
                 sx={{ backgroundColor: "rgba(247, 248, 251, 1)" }}
                 size="small"
                 id="custom-css-outlined-input"
+                name="subTask"
+                value={values.subTask}
+                placeholder="Sub Task"
+                onChange={handleSubTaskInputChange}
                 variant="filled"
               />
             </Grid>
@@ -211,6 +277,10 @@ export default function PastTask() {
                 sx={{ backgroundColor: "rgba(247, 248, 251, 1)" }}
                 size="small"
                 id="custom-css-outlined-input"
+                name="subTaskDuration"
+                value={values.subTaskDuration}
+                placeholder="Sub Task Duration"
+                onChange={handleSubTaskDurationInputChange}
                 variant="filled"
               />
             </Grid>
