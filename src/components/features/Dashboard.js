@@ -83,7 +83,7 @@ export default function Dashboard() {
           })}
         </TableBody>
       </Table>
-      <PastTask />
+      <PastTask items={items} setItems={setItems} />
       {/* <Button
       sx={{ borderRadius: 4,
         fontSize: '0.875rem',

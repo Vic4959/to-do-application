@@ -82,7 +82,10 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function PastTask() {
+export default function PastTask(props) {
+  console.log(props);
+  const { items, setItems } = props;
+
   const [open, setOpen] = React.useState(false);
   const [fullWidth] = React.useState(true);
   const [maxWidth] = React.useState("md");
@@ -94,60 +97,40 @@ export default function PastTask() {
     setOpen(false);
   };
   const [values, setValues] = useState({
-    taskTitle: '',
-    startTime:  '',
-    endTime: '',
-    taskDescription: '',
-    subTask: '',
-    subTaskDuration: ''
+    taskTitle: "",
+    startTime: "",
+    endTime: "",
+    taskDescription: "",
+    subTask: "",
+    subTaskDuration: "",
   });
+  console.log(values);
 
-  const handleTaskTitleInputChange = (event) => {
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    console.log(name, value);
     event.persist();
     setValues((values) => ({
       ...values,
-      taskTitle: event.target.value,
+      [name]: value,
     }));
   };
 
-  const handleStartTimeInputChange = (event) => {
-    event.persist();
-    setValues((values) => ({
-      ...values,
-      startTime: event.target.value,
-    }));
-  };
-
-  const handleEndTimeInputChange = (event) => {
-    event.persist();
-    setValues((values) => ({
-      ...values,
-      endTime: event.target.value,
-    }));
-  };
-
-  const handleTaskDescriptionInputChange = (event) => {
-    event.persist();
-    setValues((values) => ({
-      ...values,
-      taskDescription: event.target.value,
-    }));
-  };
-
-  const handleSubTaskInputChange = (event) => {
-    event.persist();
-    setValues((values) => ({
-      ...values,
-      subTask: event.target.value,
-    }));
-  };
-
-  const handleSubTaskDurationInputChange = (event) => {
-    event.persist();
-    setValues((values) => ({
-      ...values,
-      subTaskDuration: event.target.value,
-    }));
+  const handleSave = () => {
+    const tempoaryItems = [...items];
+    console.log(tempoaryItems);
+    const newItem = {
+      id: 5,
+      name: "04 Apr",
+      created: values.taskTitle,
+      startTime: values.startTime,
+      endTime: values.endTime,
+      duration: "1hr",
+      other: "...",
+    };
+    tempoaryItems.push(newItem);
+    console.log(tempoaryItems);
+    setItems(tempoaryItems);
   };
 
   return (
@@ -204,7 +187,7 @@ export default function PastTask() {
                 name="taskTitle"
                 value={values.taskTitle}
                 placeholder="Task Title"
-                onChange={handleTaskTitleInputChange}
+                onChange={handleChange}
                 color="primary"
                 sx={{ backgroundColor: "white" }}
               />
@@ -219,7 +202,7 @@ export default function PastTask() {
                 name="startTime"
                 value={values.startTime}
                 placeholder="Start Time"
-                onChange={handleStartTimeInputChange}
+                onChange={handleChange}
                 variant="filled"
               />
             </Grid>
@@ -233,7 +216,7 @@ export default function PastTask() {
                 name="endTime"
                 value={values.endTime}
                 placeholder="End Time"
-                onChange={handleEndTimeInputChange}
+                onChange={handleChange}
                 variant="filled"
               />
             </Grid>
@@ -249,7 +232,7 @@ export default function PastTask() {
               name="taskDescription"
               value={values.taskDescription}
               placeholder="Task Description"
-              onChange={handleTaskDescriptionInputChange}
+              onChange={handleChange}
               variant="filled"
             />
           </Grid>
@@ -265,7 +248,7 @@ export default function PastTask() {
                 name="subTask"
                 value={values.subTask}
                 placeholder="Sub Task"
-                onChange={handleSubTaskInputChange}
+                onChange={handleChange}
                 variant="filled"
               />
             </Grid>
@@ -280,16 +263,14 @@ export default function PastTask() {
                 name="subTaskDuration"
                 value={values.subTaskDuration}
                 placeholder="Sub Task Duration"
-                onChange={handleSubTaskDurationInputChange}
+                onChange={handleChange}
                 variant="filled"
               />
             </Grid>
           </Grid>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={handleClose}>
-            Save
-          </Button>
+          <Button onClick={handleSave}>Save</Button>
         </DialogActions>
       </BootstrapDialog>
     </div>
