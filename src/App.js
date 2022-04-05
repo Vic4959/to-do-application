@@ -1,5 +1,4 @@
 import React from "react";
-
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./components/features/Theme";
 import { CssBaseline, Toolbar } from "@mui/material";

@@ -10,6 +10,7 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import { Grid, TextField, Typography } from "@mui/material";
 import { useState } from "react";
+import { Formik } from "formik";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -174,6 +175,7 @@ export default function PastTask(props) {
         >
           Create New Task
         </BootstrapDialogTitle>
+        <Formik initialValues={{ values: "" }}>
         <DialogContent dividers sx={{ p: 0 }}>
           <Grid container spacing={4} sx={{ px: 5 }}>
             <Grid item xs={6}>
@@ -269,6 +271,7 @@ export default function PastTask(props) {
             </Grid>
           </Grid>
         </DialogContent>
+        </Formik>
         <DialogActions>
           <Button onClick={handleSave}>Save</Button>
         </DialogActions>
