@@ -11,6 +11,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import { Grid, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 import { Formik } from "formik";
+import StartTimePicker from "../picker/startTimePicker";
+import EndTimePicker from "../picker/endTimePicker";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -176,101 +178,100 @@ export default function PastTask(props) {
           Create New Task
         </BootstrapDialogTitle>
         <Formik initialValues={{ values: "" }}>
-        <DialogContent dividers sx={{ p: 0 }}>
-          <Grid container spacing={4} sx={{ px: 5 }}>
-            <Grid item xs={6}>
-              <Typography variant="body2" sx={{ color: "primary.main", mb: 1 }}>
-                Task Title
-              </Typography>
-              <RedditTextField
-                size="small"
-                id="custom-css-outlined-input"
-                variant="filled"
-                name="taskTitle"
-                value={values.taskTitle}
-                placeholder="Task Title"
-                onChange={handleChange}
-                color="primary"
-                sx={{ backgroundColor: "white" }}
-              />
+          <DialogContent dividers sx={{ p: 0 }}>
+            <Grid container spacing={4} sx={{ px: 5 }}>
+              <Grid item xs={6}>
+                <Typography
+                  variant="body2"
+                  sx={{ color: "primary.main", mb: 1 }}
+                >
+                  Task Title
+                </Typography>
+                <RedditTextField
+                  size="small"
+                  id="custom-css-outlined-input"
+                  variant="filled"
+                  name="taskTitle"
+                  value={values.taskTitle}
+                  placeholder="Task Title"
+                  onChange={handleChange}
+                  color="primary"
+                  sx={{ backgroundColor: "white" }}
+                />
+              </Grid>
+              <Grid item xs={3}>
+                <Typography
+                  variant="body2"
+                  sx={{ color: "primary.main", mb: 1 }}
+                >
+                  Start Time
+                </Typography>
+                <StartTimePicker />
+              </Grid>
+              <Grid item xs={3}>
+                <Typography
+                  variant="body2"
+                  sx={{ color: "primary.main", mb: 1 }}
+                >
+                  End Time
+                </Typography>
+                <EndTimePicker />
+              </Grid>
             </Grid>
-            <Grid item xs={3}>
+            <Grid container sx={{ px: 5, mt: 4 }}>
               <Typography variant="body2" sx={{ color: "primary.main", mb: 1 }}>
-                Start Time
+                Task Description
               </Typography>
               <RedditTextField
-                size="small"
+                multiline
+                rows={4}
                 id="custom-css-outlined-input"
-                name="startTime"
-                value={values.startTime}
-                placeholder="Start Time"
-                onChange={handleChange}
-                variant="filled"
-              />
-            </Grid>
-            <Grid item xs={3}>
-              <Typography variant="body2" sx={{ color: "primary.main", mb: 1 }}>
-                End Time
-              </Typography>
-              <RedditTextField
-                size="small"
-                id="custom-css-outlined-input"
-                name="endTime"
-                value={values.endTime}
-                placeholder="End Time"
-                onChange={handleChange}
-                variant="filled"
-              />
-            </Grid>
-          </Grid>
-          <Grid container sx={{ px: 5, mt: 4 }}>
-            <Typography variant="body2" sx={{ color: "primary.main", mb: 1 }}>
-              Task Description
-            </Typography>
-            <RedditTextField
-              multiline
-              rows={4}
-              id="custom-css-outlined-input"
-              name="taskDescription"
-              value={values.taskDescription}
-              placeholder="Task Description"
-              onChange={handleChange}
-              variant="filled"
-            />
-          </Grid>
-          <Grid container sx={{ mt: 4, bgcolor: "white", p: 5 }} spacing={2}>
-            <Grid item xs={7}>
-              <Typography variant="body2" sx={{ color: "primary.main", mb: 1 }}>
-                Sub-task
-              </Typography>
-              <RedditTextField
-                sx={{ backgroundColor: "rgba(247, 248, 251, 1)" }}
-                size="small"
-                id="custom-css-outlined-input"
-                name="subTask"
-                value={values.subTask}
-                placeholder="Sub Task"
+                name="taskDescription"
+                value={values.taskDescription}
+                placeholder="Task Description"
                 onChange={handleChange}
                 variant="filled"
               />
             </Grid>
-            <Grid item xs={3}>
-              <Typography variant="body2" sx={{ color: "primary.main", mb: 1 }}>
-                Sub-task Duration
-              </Typography>
-              <RedditTextField
-                sx={{ backgroundColor: "rgba(247, 248, 251, 1)" }}
-                size="small"
-                id="custom-css-outlined-input"
-                name="subTaskDuration"
-                value={values.subTaskDuration}
-                placeholder="Sub Task Duration"
-                onChange={handleChange}
-                variant="filled"
-              />
+            <Grid container sx={{ mt: 4, bgcolor: "white", p: 5 }} spacing={2}>
+              <Grid item xs={7}>
+                <Typography
+                  variant="body2"
+                  sx={{ color: "primary.main", mb: 1 }}
+                >
+                  Sub-task
+                </Typography>
+                <RedditTextField
+                  sx={{ backgroundColor: "rgba(247, 248, 251, 1)" }}
+                  size="small"
+                  id="custom-css-outlined-input"
+                  name="subTask"
+                  value={values.subTask}
+                  placeholder="Sub Task"
+                  onChange={handleChange}
+                  variant="filled"
+                />
+              </Grid>
+              <Grid item xs={3}>
+                <Typography
+                  variant="body2"
+                  sx={{ color: "primary.main", mb: 1 }}
+                >
+                  Sub-task Duration
+                </Typography>
+                <RedditTextField
+                  sx={{ backgroundColor: "rgba(247, 248, 251, 1)" }}
+                  size="small"
+                  id="custom-css-outlined-input"
+                  name="subTaskDuration"
+                  value={values.subTaskDuration}
+                  placeholder="Sub Task Duration"
+                  onChange={handleChange}
+                  variant="filled"
+                />
+              </Grid>
             </Grid>
-          </Grid>
-        </DialogContent>
+          </DialogContent>
         </Formik>
         <DialogActions>
           <Button onClick={handleSave}>Save</Button>
